@@ -1,0 +1,12 @@
+version: '2'
+services:
+    image_system:
+        image: image_system:V1.0
+        container_name: image_system
+        ports:
+          - "9905:9905"
+        volumes:
+            # app
+          - ../:/root/www/image_system/
+        command: ["bash", "-c", "cd /root/www/image_system && nohup gunicorn -c ./deploy/gunicorn.conf app:app"]
+        network_mode: "bridge"
