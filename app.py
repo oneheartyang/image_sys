@@ -85,6 +85,8 @@ def uploadImage():
         "msg": "success",
         "png_base64_data": png_base64_data
     }
+
+    os.remove(file_path)
     return jsonify(response)
 
 
