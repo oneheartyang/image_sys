@@ -6,8 +6,8 @@ var bg = new createjs.Bitmap(bg_data_0); //创建背景图
 //设置背景图位置
 bg.regX = 0,     // 沿X轴负方向的偏移量
     bg.regY = 0, // 沿Y轴负方向的偏移量
-    bg.x = 60,   // 绘制源点 X坐标
-    bg.y = 65;   // 绘制源点 Y坐标
+    bg.x = 50,   // 绘制源点 X坐标
+    bg.y = 50;   // 绘制源点 Y坐标
 // bg.alpha = 0.5
 bg.scaleX = 0.6;  //X轴放大(拉伸)
 bg.scaleY = 0.6;  // Y周倾斜角度 DEG
@@ -155,6 +155,9 @@ oFReader.onload = function (oFREvent) {
                 }, 200)
 
             }
+            else {
+                alertMsg("请求服务失败");
+            }
         }
     }
 
@@ -230,8 +233,8 @@ function isAndroid() {
 }
 
 function change_bg(bg) {
-    // stage.removeChild(bg);
-    stage.removeAllChildren()
+    stage.removeChild(bg);
+    // stage.removeAllChildren()
     var bg_data = ""
     if (bg == 1) {
         bg_data = bg_data_1
@@ -249,16 +252,54 @@ function change_bg(bg) {
 
     var bg = new createjs.Bitmap(bg_data); //创建背景图
 
-    bg.regX = 0,
-        bg.regY = 0,
-        bg.x = 100,
-        bg.y = 100 ,
-        bg.scaleX = 1.5,
-        bg.scaleY = 1.5
-    ; //设置背景图位置
-    // bg.alpha = 0.5
-    stage.addChild(bg); //放置背景图到canvas画布
-    stage.update();
+    var bg_image = new Image();
+
+    var bg_x = "", bg_y = ""
+
+
+    bg_image.src = bg_data;
+
+    bg_image.onload = function () {
+        var div_width = $("#demoCanvas").width();
+        var div_height = $("#demoCanvas").height();
+        var old_width = bg_image.width;
+        var old_height = bg_image.height;
+        // var scale_x=div_width*old_width/old_height;
+        // var scale_y=div_width*old_height/old_width;
+        console.log('old_width:' + old_width + '  old_height:' + old_height);
+        console.log('div_width:' + div_width + '  div_height:' + div_height);
+
+        var scale_x=div_width*old_width/old_height;
+        var scale_y=div_width*old_height/old_width;
+
+        var split_data = (div_width-div_height)/4;
+
+        if (div_width > old_width) {
+            bg_x = (scale_x - old_width / 2) / 2 ;
+            bg_y = (scale_y - old_height / 2) / 2 ;
+        }
+        else {
+            bg_x = 20 ;
+            bg_y = 20 ;
+        }
+
+
+        console.log('scale_x:' + scale_x + ' ,scale_y:' + bg_y);
+        console.log('bg_x:' + bg_x + ' ,bg_y:' + bg_y);
+
+        bg.regX = 0,
+            bg.regY = 0,
+            bg.x = bg_x,
+            bg.y = bg_y ,
+            bg.scaleX = 1.5,
+            bg.scaleY = 1.5
+        ; //设置背景图位置
+        // bg.alpha = 0.5
+        stage.addChild(bg); //放置背景图到canvas画布
+        stage.swapChildren(imgthis, bg);
+        stage.addChild(imgthis);
+        stage.update();
+    };
 }
 
 function select_yes_no(obj, item) {

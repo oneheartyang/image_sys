@@ -7,9 +7,11 @@ import socket
 
 app = Flask(__name__)
 
-basedir = os.path.dirname(__file__)
+basedir = os.path.dirname(os.path.abspath(__file__))
 resource_dir_path = os.path.join(basedir, 'resource')
 tmp_dir_path = os.path.join(basedir, 'tmp')
+
+print('当前目录绝对路径:', basedir)
 
 udp_conf = {
     'ip': '127.0.0.1',
