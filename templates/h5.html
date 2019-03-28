@@ -21,7 +21,7 @@
 <div class="content" style="width: 94%; left: 0px; padding: 0px 3%;">
     <div class="prev">
         <div id="gesture-area" class="wrapper"></div><!--手势区域 gesture-area-->
-        <canvas id="demoCanvas" width="650" height="575" style="width:100%; height:100%"></canvas>
+        <canvas id="demoCanvas" width="650" height="600" style="width:100%; height:100%"></canvas>
         <!--图片合成区 demoCanvas-->
         {#        <img id="base_background" src="{{ url_for('static', filename='images/base.png') }}" width="100%">#}
 {#        <input type="file"#}
@@ -29,16 +29,14 @@
 {#               name="photo" id="inputimg">#}
     </div>
     <div class="send">
-        <div class="button upimg">上传照片</div>
-{#        <div style="width:103px; height:34px; background: url('{{url_for('static', filename='images/confirm_send.png') }}') no-repeat;z-index: 2; position: absolute; left: 50%; margin-left: -50px; background-size: 100% auto; margin-top: 10px;"></div>#}
-        <img src="{{ url_for('static', filename='images/btn_background.png') }}" width="169px">
+       
+        <img src="{{ url_for('static', filename='images/ok.png') }}" width="169px">
                 <input type="file"
                style="opacity: 0; z-index: 99; position: absolute; width: 100%; height: 100%; position: absolute; top:0; left: 200px;"
                name="photo" id="inputimg">
     </div>
     <div class="send">
-        <div style="width:103px; height:34px; background: url('{{url_for('static', filename='images/confirm_send.png') }}') no-repeat;z-index: 2; position: absolute; left: 50%; margin-left: -50px; background-size: 100% auto; margin-top: 10px;"></div>
-        <img src="{{ url_for('static', filename='images/btn_background.png') }}" width="169px">
+        <img src="{{ url_for('static', filename='images/choose.png') }}" width="169px">
         <input type="button" id="make_sure_send"
                style="opacity: 0; z-index: 99; position: absolute; width: 100%; height: 100%; position: absolute; top:0; left: 0;">
     </div>
@@ -70,6 +68,34 @@
             <div class="bg_0">
                 <img src="{{ url_for('static', filename='images/moon_4.png') }}?t=1545041465443">
                 <div class="select_css"><input class="check_css" type="checkbox"  onclick="select_yes_no(this, 4);"></div>
+            </div>
+        </li>
+		<li data-id="0" style="width: 46%;">
+            <div class="bg_0">
+                <img src="{{ url_for('static', filename='images/moon_5.png') }}?t=1545041465443">
+                <div class="select_css"><input class="check_css" type="checkbox" onclick="select_yes_no(this, 5);"></div>
+{#                <div class="select_css"><input class="check_css" type="checkbox" data-id="1"></div>#}
+
+                {#<a href="javascript:;" data-attr="1" id="team_001" class="tpgray"><i class="team_003">01</i></a>#}
+            </div>
+        </li>
+        <li data-id="0" style="width: 46%;">
+            <div class="bg_0">
+                <img src="{{ url_for('static', filename='images/moon_6.png') }}?t=1545041465443">
+                <div class="select_css"><input class="check_css" type="checkbox" onclick="select_yes_no(this, 6);"></div>
+
+            </div>
+        </li>
+        <li data-id="0" style="width: 46%;">
+            <div class="bg_0">
+                <img src="{{ url_for('static', filename='images/moon_7.png') }}?t=1545041465443">
+                <div class="select_css"><input class="check_css" type="checkbox"  onclick="select_yes_no(this, 7);"></div>
+            </div>
+        </li>
+        <li data-id="0" style="width: 46%;">
+            <div class="bg_0">
+                <img src="{{ url_for('static', filename='images/moon_8.png') }}?t=1545041465443">
+                <div class="select_css"><input class="check_css" type="checkbox"  onclick="select_yes_no(this, 8s);"></div>
             </div>
         </li>
         <div style="clear:both;"></div>

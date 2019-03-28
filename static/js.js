@@ -3,15 +3,26 @@ var isNotupload = true;
 var stage = new createjs.Stage("demoCanvas"); //创建画布
 var bg = new createjs.Bitmap(bg_data_0); //创建背景图
 
+
+var bg_w = 937;			//大月亮宽
+var bg_h = 937;			//大月亮高
+
 //设置背景图位置
 bg.regX = 0,     // 沿X轴负方向的偏移量
     bg.regY = 0, // 沿Y轴负方向的偏移量
-    bg.x = 50,   // 绘制源点 X坐标
+    bg.x = 65,   // 绘制源点 X坐标
     bg.y = 50;   // 绘制源点 Y坐标
 // bg.alpha = 0.5
+
+var bg_center_x = bg.x + bg_w/2;			//大月亮中心位置
+var bg_center_y = bg.y + bg_h/2;			//大月亮中心位置
 bg.scaleX = 0.6;  //X轴放大(拉伸)
 bg.scaleY = 0.6;  // Y周倾斜角度 DEG
-stage.addChild(bg); //放置背景图到canvas画布
+
+bg_center_x *= bg.scaleX;
+bg_center_y *= bg.scaleY;
+
+//stage.addChild(bg); //放置背景图到canvas画布
 stage.update();
 createjs.Ticker.setFPS(5);
 createjs.Ticker.addEventListener("tick", tick);
@@ -233,8 +244,8 @@ function isAndroid() {
 }
 
 function change_bg(bg) {
-    stage.removeChild(bg);
-    // stage.removeAllChildren()
+    //stage.removeChild(bg);
+     stage.removeAllChildren()
     var bg_data = ""
     if (bg == 1) {
         bg_data = bg_data_1
@@ -248,6 +259,18 @@ function change_bg(bg) {
     else if (bg == 4) {
         bg_data = bg_data_4
     }
+	 else if (bg == 5) {
+        bg_data = bg_data_5
+    }
+    else if (bg == 6) {
+        bg_data = bg_data_6
+    }
+    else if (bg == 7) {
+        bg_data = bg_data_7
+    }
+	 else if (bg == 8) {
+        bg_data = bg_data_8
+    }
 
 
     var bg = new createjs.Bitmap(bg_data); //创建背景图
@@ -260,39 +283,47 @@ function change_bg(bg) {
     bg_image.src = bg_data;
 
     bg_image.onload = function () {
-        var div_width = $("#demoCanvas").width();
+        var div_width = $("#demoCanvas").width();			//屏幕宽度
         var div_height = $("#demoCanvas").height();
-        var old_width = bg_image.width;
-        var old_height = bg_image.height;
+        var old_width = bg_image.width;						//小月亮实际宽度
+        var old_height = bg_image.height;					//小月亮实际高度
         // var scale_x=div_width*old_width/old_height;
         // var scale_y=div_width*old_height/old_width;
         console.log('old_width:' + old_width + '  old_height:' + old_height);
         console.log('div_width:' + div_width + '  div_height:' + div_height);
 
-        var scale_x=div_width*old_width/old_height;
-        var scale_y=div_width*old_height/old_width;
+        // var scale_x=div_width*old_width/old_height;
+        // var scale_y=div_width*old_height/old_width;
 
-        var split_data = (div_width-div_height)/4;
+        // if (div_width > old_width) {
+            // bg_x = (scale_x - old_width / 2) / 2 ;
+            // bg_y = (scale_y - old_height / 2) / 2 ;
+        // }
+        // else {
+            // bg_x = 20 ;
+            // bg_y = 20 ;
+        // }
+		
+		
+		var moon_scale_x = 1.4;
+		var moon_scale_y = 1.4;
+		
+		var moon_w = old_width * moon_scale_x;
+		var moon_h = old_height * moon_scale_y;
+		
+		var moon_x = bg_center_x - moon_w/2;
+		var moon_y = bg_center_y - moon_h/2;
+		
 
-        if (div_width > old_width) {
-            bg_x = (scale_x - old_width / 2) / 2 ;
-            bg_y = (scale_y - old_height / 2) / 2 ;
-        }
-        else {
-            bg_x = 20 ;
-            bg_y = 20 ;
-        }
-
-
-        console.log('scale_x:' + scale_x + ' ,scale_y:' + bg_y);
-        console.log('bg_x:' + bg_x + ' ,bg_y:' + bg_y);
+       // console.log('scale_x:' + scale_x + ' ,scale_y:' + bg_y);
+       // console.log('bg_x:' + bg_x + ' ,bg_y:' + bg_y);
 
         bg.regX = 0,
             bg.regY = 0,
-            bg.x = bg_x,
-            bg.y = bg_y ,
-            bg.scaleX = 1.5,
-            bg.scaleY = 1.5
+            bg.x = moon_x,
+            bg.y = moon_y,
+            bg.scaleX = moon_scale_x,
+            bg.scaleY = moon_scale_y
         ; //设置背景图位置
         // bg.alpha = 0.5
         stage.addChild(bg); //放置背景图到canvas画布
@@ -364,3 +395,5 @@ function circle_image_v2(img, imgType) {
     contex.restore();
     return canvas.toDataURL('image/png');
 }
+
+change_bg(1)
