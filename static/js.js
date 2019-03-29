@@ -209,9 +209,6 @@ document.getElementById('make_sure_send').onclick = function () {
 			alertMsg("1234566777");
             if (ajax.readyState == 4) {
                 if (ajax.status >= 200 && ajax.status < 300 || ajax.status == 304) {
-                    console.log("上传成功");
-                    var obj = JSON.parse(ajax.responseText);
-                    // console.log(obj.fileURL);
                     alertMsg("上传成功");
                 }
 				else
