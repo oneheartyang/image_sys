@@ -21,7 +21,7 @@ udp_conf = {
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template('h5.html')
 
 
 @app.route('/index')
@@ -155,4 +155,4 @@ def af_request(resp):
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 9905)
+    app.run('0.0.0.0', 80)
