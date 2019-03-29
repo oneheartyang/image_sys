@@ -18,10 +18,15 @@ udp_conf = {
     'port': 18888
 }
 
+udp_conf1 = {
+    'ip': '127.0.0.1',
+    'port': 28888
+}
+
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template('h5.html')
 
 
 @app.route('/index')
@@ -115,7 +120,7 @@ def send_data():
         f.write(imgdata)
 
     # todo 发送合成的图片
-    # result = send_udp_socker(udp_conf.get('ip'), int(udp_conf.get('port')), file_path)
+    result = send_udp_socker(udp_conf1.get('ip'), int(udp_conf1.get('port')), file_path)
 
     response = {
         "code": 0,
@@ -155,4 +160,4 @@ def af_request(resp):
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 9905)
+    app.run('0.0.0.0', 80)
