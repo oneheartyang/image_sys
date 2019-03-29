@@ -352,6 +352,12 @@ function select_yes_no(obj, item) {
     }
 }
 
+$(document).on('click',".bg_0", function () {
+    $(".select_css").removeClass("select");
+    $(this).children("div").addClass("select")
+    change_bg($(this).attr('data-id'))
+});
+
 /**
  * 把图片处理成圆形,如果不是正方形就按最小边一半为半径处理
  * @param  {object} imgObj 图片(img)对象
