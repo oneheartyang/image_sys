@@ -111,6 +111,10 @@ var imgthis;
 var oFReader = new FileReader(),
     rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
 oFReader.onload = function (oFREvent) {
+	
+	alertMsg("图片上传并合成中，请稍后...");
+	
+	
     stage.removeChild(imgthis);
 
     var data = {"imgDatadahe": oFREvent.target.result};
@@ -201,6 +205,8 @@ document.getElementById('make_sure_send').onclick = function () {
         ajax.open("POST", "/send_data", true);
         ajax.send(postDataFormat(data));
         ajax.onreadystatechange = function () {
+			console.log(ajax.readyState);
+			alertMsg("1234566777");
             if (ajax.readyState == 4) {
                 if (ajax.status >= 200 && ajax.status < 300 || ajax.status == 304) {
                     console.log("上传成功");
@@ -208,6 +214,10 @@ document.getElementById('make_sure_send').onclick = function () {
                     // console.log(obj.fileURL);
                     alertMsg("上传成功");
                 }
+				else
+				{
+					alertMsg("上传失败，请检查接口");
+				}
             }
         }
 
@@ -352,11 +362,13 @@ function select_yes_no(obj, item) {
     }
 }
 
-$(document).on('click',".bg_0", function () {
-    $(".select_css").removeClass("select");
-    $(this).children("div").addClass("select")
-    change_bg($(this).attr('data-id'))
-});
+$(function () {
+    $(document).on("click", ".bg_0", function () {
+        $(".select_css").removeClass("select");
+        $(this).children("div").addClass("select")
+        change_bg($(this).attr('data-id'))
+    });
+})
 
 /**
  * 把图片处理成圆形,如果不是正方形就按最小边一半为半径处理

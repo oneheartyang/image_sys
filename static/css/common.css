@@ -54,6 +54,7 @@ div {
     /*padding: 3% 3% 4% 1px;*/
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 li{
