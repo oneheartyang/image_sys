@@ -1,0 +1,11 @@
+<w>500.000000000</w>
+<h>500.000000000</h>
+<request>request</request>
+<respond>respond</respond>
+
+<!-- 我监听的端口 -->
+<port>18888</port>
+<!-- 你的主机IP -->
+<remoteIp>127.0.0.1</remoteIp>
+<!-- 你的监听端口 -->
+<remotePort>39999</remotePort>
