@@ -131,8 +131,8 @@ def send_udp_socker(ip, port, data, need_result=True):
     """
     data_bytes = bytes(data, 'utf-8')
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.sendto(data_bytes, (udp_conf.get('ip'), int(udp_conf.get('port'))))
-    print('sendto ip:{0}:{1}. data:{2}'.format(udp_conf.get('ip'), udp_conf.get('port'), data_bytes))
+    s.sendto(data_bytes, (ip, int(port)))
+    print('sendto ip:{0}:{1}. data:{2}'.format(ip, port, data_bytes))
     if need_result:
         result = s.recv(1024).decode('utf-8')
         return result
