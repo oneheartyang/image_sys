@@ -30,13 +30,13 @@
     </div>
     <div class="send">
        
-        <img src="{{ url_for('static', filename='images/ok.png') }}" width="169px">
+        <img src="{{ url_for('static', filename='images/choose.png') }}" width="169px">
                 <input type="file"
                style="opacity: 0; z-index: 99; position: absolute; width: 100%; height: 100%; position: absolute; top:0; left: 200px;"
                name="photo" id="inputimg">
     </div>
     <div class="send">
-        <img src="{{ url_for('static', filename='images/choose.png') }}" width="169px">
+        <img src="{{ url_for('static', filename='images/ok.png') }}" width="169px">
         <input type="button" id="make_sure_send"
                style="opacity: 0; z-index: 99; position: absolute; width: 100%; height: 100%; position: absolute; top:0; left: 0;">
     </div>
@@ -45,7 +45,7 @@
         <li data-id="0" style="width: 46%;">
             <div class="bg_0">
                 <img src="{{ url_for('static', filename='images/moon_1.png') }}?t=1545041465443">
-                <div class="select_css"><input class="check_css" type="checkbox" onclick="select_yes_no(this, 1);"></div>
+                <div class="select_css select"><input class="check_css" type="checkbox" onclick="select_yes_no(this, 1);"></div>
 {#                <div class="select_css"><input class="check_css" type="checkbox" data-id="1"></div>#}
 
                 {#<a href="javascript:;" data-attr="1" id="team_001" class="tpgray"><i class="team_003">01</i></a>#}
@@ -95,7 +95,7 @@
         <li data-id="0" style="width: 46%;">
             <div class="bg_0">
                 <img src="{{ url_for('static', filename='images/moon_8.png') }}?t=1545041465443">
-                <div class="select_css"><input class="check_css" type="checkbox"  onclick="select_yes_no(this, 8s);"></div>
+                <div class="select_css"><input class="check_css" type="checkbox"  onclick="select_yes_no(this, 8);"></div>
             </div>
         </li>
         <div style="clear:both;"></div>

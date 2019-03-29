@@ -142,8 +142,14 @@ oFReader.onload = function (oFREvent) {
                     console.log('imgWidth:' + imgWidth + ';elePos.w:' + elePos.w + ';scale:' + sizescale);
 
                     /*图片初始位置*/
-                    var fx = 250 / 2;
-                    var fy = 250 / 2;
+                    var moon_scale_x = sizescale;
+                    var moon_scale_y = sizescale;
+
+                    var moon_w = imgWidth * moon_scale_x;
+                    var moon_h = imgHeight * moon_scale_y;
+
+                    var fx = bg_center_x - moon_w/2;
+                    var fy = bg_center_y - moon_h/2;
 
                     /*注：上传图片，放大缩小倍数需要除以2；设计稿中头像左上角，距内容区左上角距离，依然也需要除以2（横坐标除以2，纵坐标除以2）*/
 
@@ -243,32 +249,32 @@ function isAndroid() {
     return isAndroid;
 }
 
-function change_bg(bg) {
+function change_bg(bg_item) {
     //stage.removeChild(bg);
      stage.removeAllChildren()
     var bg_data = ""
-    if (bg == 1) {
+    if (bg_item == 1) {
         bg_data = bg_data_1
     }
-    else if (bg == 2) {
+    else if (bg_item == 2) {
         bg_data = bg_data_2
     }
-    else if (bg == 3) {
+    else if (bg_item == 3) {
         bg_data = bg_data_3
     }
-    else if (bg == 4) {
+    else if (bg_item == 4) {
         bg_data = bg_data_4
     }
-	 else if (bg == 5) {
+	 else if (bg_item == 5) {
         bg_data = bg_data_5
     }
-    else if (bg == 6) {
+    else if (bg_item == 6) {
         bg_data = bg_data_6
     }
-    else if (bg == 7) {
+    else if (bg_item == 7) {
         bg_data = bg_data_7
     }
-	 else if (bg == 8) {
+	 else if (bg_item == 8) {
         bg_data = bg_data_8
     }
 
