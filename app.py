@@ -18,6 +18,11 @@ udp_conf = {
     'port': 18888
 }
 
+udp_conf1 = {
+    'ip': '127.0.0.1',
+    'port': 28888
+}
+
 
 @app.route('/')
 def hello_world():
@@ -115,7 +120,7 @@ def send_data():
         f.write(imgdata)
 
     # todo 发送合成的图片
-    # result = send_udp_socker(udp_conf.get('ip'), int(udp_conf.get('port')), file_path)
+    result = send_udp_socker(udp_conf1.get('ip'), int(udp_conf1.get('port')), file_path)
 
     response = {
         "code": 0,
@@ -131,8 +136,8 @@ def send_udp_socker(ip, port, data, need_result=True):
     """
     data_bytes = bytes(data, 'utf-8')
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.sendto(data_bytes, (udp_conf.get('ip'), int(udp_conf.get('port'))))
-    print('sendto ip:{0}:{1}. data:{2}'.format(udp_conf.get('ip'), udp_conf.get('port'), data_bytes))
+    s.sendto(data_bytes, (ip, int(port)))
+    print('sendto ip:{0}:{1}. data:{2}'.format(ip, port, data_bytes))
     if need_result:
         result = s.recv(1024).decode('utf-8')
         return result
