@@ -120,7 +120,7 @@ def send_data():
         f.write(imgdata)
 
     # todo 发送合成的图片
-    result = send_udp_socker(udp_conf1.get('ip'), int(udp_conf1.get('port')), file_path)
+    result = send_udp_socker(udp_conf1.get('ip'), int(udp_conf1.get('port')), file_path, False)
 
     response = {
         "code": 0,
